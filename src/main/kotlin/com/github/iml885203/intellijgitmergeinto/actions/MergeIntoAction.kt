@@ -33,6 +33,7 @@ class MergeIntoAction : AnAction() {
         val targetBranch = "develop"
         ProgressManager.getInstance().runProcessWithProgressSynchronously({
             mergeBranch(project, repository, currentBranch, targetBranch)
+            MyNotifier.notifySuccess(project, "Merge into ${targetBranch} completed.")
         }, "Merging Branch", true, project)
     }
 
@@ -62,6 +63,10 @@ class MergeIntoAction : AnAction() {
             // Merge current branch into develop
             updateProgress(indicator, "Merging current branch into ${targetBranch}...", 0.33)
             executeGitCommand(project, repository, GitCommand.MERGE, arrayOf(currentBranch))
+
+            // Push changes
+            updateProgress(indicator, "Pushing changes...", 0.5)
+            executeGitCommand(project, repository, GitCommand.PUSH, arrayOf("origin", targetBranch))
 
             // Checkout back to the original branch
             updateProgress(indicator, "Checking out original branch...", 0.66)
@@ -120,6 +125,6 @@ class MergeIntoAction : AnAction() {
     private fun updateProgress(indicator: ProgressIndicator, text: String, fraction: Double) {
         indicator.text = text
         indicator.fraction = fraction
-        Thread.sleep(1000) // Simulate progress
+        //Thread.sleep(1000) // Simulate progress
     }
 }
