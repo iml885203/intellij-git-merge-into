@@ -7,8 +7,8 @@ import com.intellij.openapi.project.Project
 object MyNotifier {
     fun notifyFailed(project: Project, content: String) {
         NotificationGroupManager.getInstance()
-            .getNotificationGroup("Git Merge")
-            .createNotification("Git Merge Failed", content, NotificationType.WARNING)
+            .getNotificationGroup("Git Merge Into")
+            .createNotification("Git merge into failed", content, NotificationType.WARNING)
             .notify(project)
     }
 }

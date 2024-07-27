@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.iml885203.intellijgitmergeinto</id>
-    <name>intellij-git-merge-into</name>
+    <name>Git Merge Into</name>
     <vendor>iml885203</vendor>
 
     <depends>com.intellij.modules.platform</depends>
@@ -10,7 +10,7 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <notificationGroup id="Git Merge"
+        <notificationGroup id="Git Merge Into"
                            displayType="BALLOON"
                            key="notification.group.name"/>
     </extensions>
