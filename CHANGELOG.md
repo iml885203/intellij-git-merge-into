@@ -3,5 +3,6 @@
 # intellij-git-merge-into Changelog
 
 ## [Unreleased]
-### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+
+## [2024.7.1]
+- Support merge into develop branch
