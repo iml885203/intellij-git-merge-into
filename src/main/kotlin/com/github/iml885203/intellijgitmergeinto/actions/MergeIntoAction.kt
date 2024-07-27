@@ -69,11 +69,24 @@ class MergeIntoAction : AnAction() {
 
             indicator.fraction = 1.0
         } catch (ex: Exception) {
-            handleMergeFailure(ex, currentBranch, project, repository)
+            handleMergeFailure(ex, indicator, currentBranch, project, repository)
         }
     }
 
-    private fun handleMergeFailure(ex: Exception, currentBranch: String, project: Project, repository: GitRepository) {
+    private fun handleMergeFailure(
+        ex: Exception,
+        indicator: ProgressIndicator,
+        currentBranch: String,
+        project: Project,
+        repository: GitRepository
+    ) {
+        try {
+            indicator.checkCanceled()
+        } catch (cancelEx: Exception) {
+            MyNotifier.notifyFailed(project, "Merge operation was cancelled.")
+            return
+        }
+
         if (ex.message != null) {
             MyNotifier.notifyFailed(project, ex.message!!)
         }
@@ -107,6 +120,6 @@ class MergeIntoAction : AnAction() {
     private fun updateProgress(indicator: ProgressIndicator, text: String, fraction: Double) {
         indicator.text = text
         indicator.fraction = fraction
-//        Thread.sleep(500) // Simulate progress
+        Thread.sleep(1000) // Simulate progress
     }
 }
