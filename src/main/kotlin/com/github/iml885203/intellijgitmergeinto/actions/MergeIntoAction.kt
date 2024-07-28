@@ -7,19 +7,25 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
+import com.intellij.openapi.progress.Task
 import git4idea.commands.GitCommand
 
 class MergeIntoAction : AnAction() {
-    private lateinit var state: AppSettings.State
     private lateinit var gitCommander: GitCommander
     private lateinit var notifier: MyNotifier
+    private lateinit var state: AppSettings.State
+    private lateinit var indicatorProcessor: IndicatorProcessor
+    private var isRunning: Boolean = false
 
     override fun actionPerformed(e: AnActionEvent ) {
         val project = e.project ?: return
-        state = AppSettings.instance.state
+
+        if (isRunning) {
+            return
+        }
+
         gitCommander = GitCommander(project)
         notifier = MyNotifier(project)
-
         if (gitCommander.repositoryNotFound()) {
             notifier.notifyFailed("No Git repository found")
             return
@@ -30,23 +36,27 @@ class MergeIntoAction : AnAction() {
             return
         }
 
-        ProgressManager.getInstance().runProcessWithProgressSynchronously({
-            val targetBranch = state.targetBranch
-            mergeBranch(gitCommander.getCurrentBranch(), targetBranch)
-        }, "Merging Branch", true, project)
-
-        // TODO: Allow user to setting run in background in the settings
-//        ProgressManager.getInstance().run(object :
-//            Task.Backgroundable(project,"Merging branch",true) {
-//                override fun run(indicator: ProgressIndicator) {
-//                    Thread.sleep(5_000)
-//                }
-//        })
+        val progressManager = ProgressManager.getInstance()
+        state = AppSettings.instance.state
+        val targetBranch = state.targetBranch
+        if (state.runInBackground) {
+            progressManager.run(object :
+                Task.Backgroundable(project,"Merging into $targetBranch",true) {
+                override fun run(indicator: ProgressIndicator) {
+                    mergeBranch(gitCommander.getCurrentBranch(), targetBranch)
+                }
+            })
+        } else {
+            progressManager.runProcessWithProgressSynchronously({
+                mergeBranch(gitCommander.getCurrentBranch(), targetBranch)
+            }, "Merging Into $targetBranch", true, project)
+        }
     }
 
     private fun mergeBranch(currentBranch: String, targetBranch: String) {
+        this.isRunning = true
         val indicator = ProgressManager.getInstance().progressIndicator
-        val indicatorProcessor = IndicatorProcessor(indicator, step = if (state.pushAfterMerge) 6 else 5)
+        indicatorProcessor = IndicatorProcessor(indicator, step = if (state.pushAfterMerge) 6 else 5)
 
         try {
             gitCommander.checkUncommittedChanges()
@@ -82,6 +92,7 @@ class MergeIntoAction : AnAction() {
             thisLogger().warn(ex)
             handleMergeFailure(ex, indicator, currentBranch)
         }
+        this.isRunning = false
     }
 
     private fun handleMergeFailure(ex: Exception, indicator: ProgressIndicator, currentBranch: String) {

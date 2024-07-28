@@ -15,7 +15,7 @@ class MyNotifier(private var project: Project) {
     }
 
     fun notifySuccess(content: String) {
-        createNotification("Git merge into", content, NotificationType.INFORMATION)
+        createNotification("Git merge into success", content, NotificationType.INFORMATION)
             .notify(project)
     }
 
