@@ -28,19 +28,22 @@ class AppSettingsConfigurable : Configurable {
     override fun isModified(): Boolean {
         val state = AppSettings.instance.state
         return mySettingsComponent?.targetBranchText != state.targetBranch ||
-                mySettingsComponent?.ideaUserStatus != state.ideaStatus
+                mySettingsComponent?.pushAfterMerge != state.pushAfterMerge ||
+                mySettingsComponent?.runInBackground != state.runInBackground
     }
 
     override fun apply() {
         val state = AppSettings.instance.state
         state.targetBranch = mySettingsComponent?.targetBranchText ?: ""
-        state.ideaStatus = mySettingsComponent?.ideaUserStatus ?: false
+        state.pushAfterMerge = mySettingsComponent?.pushAfterMerge ?: false
+        state.runInBackground = mySettingsComponent?.runInBackground ?: false
     }
 
     override fun reset() {
         val state = AppSettings.instance.state
         mySettingsComponent?.targetBranchText = state.targetBranch
-        mySettingsComponent?.ideaUserStatus = state.ideaStatus
+        mySettingsComponent?.pushAfterMerge = state.pushAfterMerge
+        mySettingsComponent?.runInBackground = state.runInBackground
     }
 
     override fun disposeUIResources() {

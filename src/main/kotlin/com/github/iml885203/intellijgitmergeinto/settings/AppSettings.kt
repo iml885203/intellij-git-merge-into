@@ -13,7 +13,8 @@ class AppSettings : PersistentStateComponent<AppSettings.State> {
 
     class State {
         var targetBranch: String = "develop"
-        var ideaStatus: Boolean = false
+        var pushAfterMerge: Boolean = true
+        var runInBackground: Boolean = false
     }
 
     private var myState: State = State()

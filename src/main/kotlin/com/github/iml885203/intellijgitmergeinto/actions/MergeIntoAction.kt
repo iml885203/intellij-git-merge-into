@@ -7,16 +7,16 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
-import com.intellij.openapi.progress.Task
 import git4idea.commands.GitCommand
 
 class MergeIntoAction : AnAction() {
+    private lateinit var state: AppSettings.State
     private lateinit var gitCommander: GitCommander
     private lateinit var notifier: MyNotifier
 
     override fun actionPerformed(e: AnActionEvent ) {
         val project = e.project ?: return
-        val state = AppSettings.instance.state
+        state = AppSettings.instance.state
         gitCommander = GitCommander(project)
         notifier = MyNotifier(project)
 
@@ -46,7 +46,7 @@ class MergeIntoAction : AnAction() {
 
     private fun mergeBranch(currentBranch: String, targetBranch: String) {
         val indicator = ProgressManager.getInstance().progressIndicator
-        val indicatorProcessor = IndicatorProcessor(indicator, 6)
+        val indicatorProcessor = IndicatorProcessor(indicator, step = if (state.pushAfterMerge) 6 else 5)
 
         try {
             gitCommander.checkUncommittedChanges()
@@ -68,8 +68,10 @@ class MergeIntoAction : AnAction() {
             gitCommander.execute(GitCommand.MERGE, arrayOf(currentBranch))
 
             // Push changes
-            indicatorProcessor.nextStep("Pushing changes...")
-            gitCommander.execute(GitCommand.PUSH, arrayOf("origin", targetBranch))
+            if (state.pushAfterMerge) {
+                indicatorProcessor.nextStep("Pushing changes...")
+                gitCommander.execute(GitCommand.PUSH, arrayOf("origin", targetBranch))
+            }
 
             // Checkout back to the original branch
             indicatorProcessor.nextStep("Checking out original branch...")

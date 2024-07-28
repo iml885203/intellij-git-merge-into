@@ -10,12 +10,14 @@ import javax.swing.JPanel
 class AppSettingsComponent {
     private val myMainPanel: JPanel
     private val myTargetBranchText = JBTextField()
-    private val myIdeaUserStatus = JBCheckBox("IntelliJ IDEA user")
+    private val myPushAfterMerge = JBCheckBox("Push after merge")
+    private val myRunInBackground = JBCheckBox("Run in background")
 
     init {
         myMainPanel = FormBuilder.createFormBuilder()
             .addLabeledComponent(JBLabel("Target branch:"), this.myTargetBranchText, 1, false)
-            .addComponent(myIdeaUserStatus, 1)
+            .addComponent(myPushAfterMerge, 1)
+            .addComponent(myRunInBackground, 1)
             .addComponentFillVertically(JPanel(), 0)
             .panel
     }
@@ -32,9 +34,15 @@ class AppSettingsComponent {
             this.myTargetBranchText.text = newText
         }
 
-    var ideaUserStatus: Boolean
-        get() = myIdeaUserStatus.isSelected
+    var pushAfterMerge: Boolean
+        get() = myPushAfterMerge.isSelected
         set(newStatus) {
-            myIdeaUserStatus.isSelected = newStatus
+            myPushAfterMerge.isSelected = newStatus
+        }
+
+    var runInBackground: Boolean
+        get() = myRunInBackground.isSelected
+        set(newStatus) {
+            myRunInBackground.isSelected = newStatus
         }
 }
