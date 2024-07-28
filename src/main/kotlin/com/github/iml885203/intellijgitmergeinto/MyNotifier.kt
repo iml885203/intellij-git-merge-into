@@ -8,13 +8,13 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.Project
 import com.intellij.vcs.console.ShowVcsConsoleTabAction
 
-object MyNotifier {
-    fun notifyFailed(project: Project, content: String) {
+class MyNotifier(private var project: Project) {
+    fun notifyFailed(content: String) {
         createNotification("Git merge into failed", content, NotificationType.WARNING)
             .notify(project)
     }
 
-    fun notifySuccess(project: Project, content: String) {
+    fun notifySuccess(content: String) {
         createNotification("Git merge into", content, NotificationType.INFORMATION)
             .notify(project)
     }
