@@ -6,6 +6,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
+import com.intellij.openapi.progress.Task
 import git4idea.commands.GitCommand
 
 class MergeIntoAction : AnAction() {
@@ -32,6 +33,14 @@ class MergeIntoAction : AnAction() {
             val targetBranch = "develop"
             mergeBranch(gitCommander.getCurrentBranch(), targetBranch)
         }, "Merging Branch", true, project)
+
+        // TODO: Allow user to setting run in background in the settings
+//        ProgressManager.getInstance().run(object :
+//            Task.Backgroundable(project,"Merging branch",true) {
+//                override fun run(indicator: ProgressIndicator) {
+//                    Thread.sleep(5_000)
+//                }
+//        })
     }
 
     private fun mergeBranch(currentBranch: String, targetBranch: String) {
