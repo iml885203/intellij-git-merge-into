@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+- Support AppSettings
+
 ## [2024.7.3]
 
 - Refactor code
