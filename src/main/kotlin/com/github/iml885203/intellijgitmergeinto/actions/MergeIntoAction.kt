@@ -1,6 +1,7 @@
 package com.github.iml885203.intellijgitmergeinto.actions
 
 import com.github.iml885203.intellijgitmergeinto.*
+import com.github.iml885203.intellijgitmergeinto.settings.AppSettings
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.diagnostic.thisLogger
@@ -15,6 +16,7 @@ class MergeIntoAction : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent ) {
         val project = e.project ?: return
+        val state = AppSettings.instance.state
         gitCommander = GitCommander(project)
         notifier = MyNotifier(project)
 
@@ -29,8 +31,7 @@ class MergeIntoAction : AnAction() {
         }
 
         ProgressManager.getInstance().runProcessWithProgressSynchronously({
-            // TODO: Allow user to setting target branch in the settings
-            val targetBranch = "develop"
+            val targetBranch = state.targetBranch
             mergeBranch(gitCommander.getCurrentBranch(), targetBranch)
         }, "Merging Branch", true, project)
 

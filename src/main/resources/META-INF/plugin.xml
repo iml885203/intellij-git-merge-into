@@ -13,6 +13,13 @@
         <notificationGroup id="Git Merge Into"
                            displayType="BALLOON"
                            key="notification.group.name"/>
+        <applicationService
+                serviceImplementation="com.github.iml885203.intellijgitmergeinto.settings.AppSettings"/>
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.github.iml885203.intellijgitmergeinto.settings.AppSettingsConfigurable"
+                id="com.github.iml885203.intellijgitmergeinto.settings.AppSettingsConfigurable"
+                displayName="SDK: Application Settings Example"/>
     </extensions>
 
     <actions>
