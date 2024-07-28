@@ -4,7 +4,7 @@
 
 ## [Unreleased]
 
-- Support AppSettings
+- Support AppSettings: target branch, run in background, push after merge
 
 ## [2024.7.3]
 
