@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2024.7.5] - 2024-07-29
+
 - Fix settings name
 
 ## [2024.7.4] - 2024-07-28
@@ -24,7 +26,8 @@
 
 - Support merge into develop branch
 
-[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.4...HEAD
+[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.5...HEAD
+[2024.7.5]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.4...v2024.7.5
 [2024.7.4]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.3...v2024.7.4
 [2024.7.3]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.2...v2024.7.3
 [2024.7.2]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.1...v2024.7.2
