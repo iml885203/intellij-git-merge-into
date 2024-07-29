@@ -19,7 +19,7 @@
                 parentId="tools"
                 instance="com.github.iml885203.intellijgitmergeinto.settings.AppSettingsConfigurable"
                 id="com.github.iml885203.intellijgitmergeinto.settings.AppSettingsConfigurable"
-                displayName="SDK: Application Settings Example"/>
+                displayName="Git Merge Into"/>
     </extensions>
 
     <actions>

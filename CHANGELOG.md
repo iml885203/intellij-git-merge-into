@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+- Fix settings name
+
 ## [2024.7.4] - 2024-07-28
 
 - Support AppSettings: target branch, run in background, push after merge
