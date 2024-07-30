@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2024.7.6] - 2024-07-30
+
 - Update action icon
 - Add merge into action to Git Open action group
 
@@ -29,7 +31,8 @@
 
 - Support merge into develop branch
 
-[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.5...HEAD
+[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.6...HEAD
+[2024.7.6]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.5...v2024.7.6
 [2024.7.5]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.4...v2024.7.5
 [2024.7.4]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.3...v2024.7.4
 [2024.7.3]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.2...v2024.7.3
