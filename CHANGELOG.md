@@ -5,6 +5,7 @@
 ## [Unreleased]
 
 - Update action icon
+- Add merge into action to Git Open action group
 
 ## [2024.7.5] - 2024-07-29
 
