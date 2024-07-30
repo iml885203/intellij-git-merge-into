@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+- Update action icon
+
 ## [2024.7.5] - 2024-07-29
 
 - Fix settings name

@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>com.github.iml885203.intellijgitmergeinto</id>
     <name>Git Merge Into</name>
-    <vendor>iml885203</vendor>
+    <vendor>Logan</vendor>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>Git4Idea</depends>
@@ -23,7 +23,7 @@
     </extensions>
 
     <actions>
-        <action class="com.github.iml885203.intellijgitmergeinto.actions.MergeIntoAction" id="com.github.iml885203.intellijgitmergeinto.actions.MergeIntoAction" text="Merge Into" icon="com.intellij.icons.ExpUiIcons.Javaee.WebService">
+        <action class="com.github.iml885203.intellijgitmergeinto.actions.MergeIntoAction" id="com.github.iml885203.intellijgitmergeinto.actions.MergeIntoAction" text="Merge Into" icon="com.intellij.icons.ExpUiIcons.Vcs.Merge">
             <keyboard-shortcut keymap="$default" first-keystroke="alt G" second-keystroke="I"/>
         </action>
     </actions>
