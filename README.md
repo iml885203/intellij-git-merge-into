@@ -9,11 +9,13 @@
 Git Merge Into is a plugin that helps you quickly merge the current branch into another branch.
 <!-- Plugin description end -->
 
+![](readme/action.png)
+
 ## Installation
 
 - Using the IDE built-in plugin system:
   
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "intellij-git-merge-into"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Git Merge Into"</kbd> >
   <kbd>Install</kbd>
   
 - Using JetBrains Marketplace:
