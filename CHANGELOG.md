@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2024.7.7] - 2024-07-31
+
 - Fix handle uncommitted changes
 - Support abort merge when conflict setting
 
@@ -34,7 +36,8 @@
 
 - Support merge into develop branch
 
-[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.6...HEAD
+[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.7...HEAD
+[2024.7.7]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.6...v2024.7.7
 [2024.7.6]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.5...v2024.7.6
 [2024.7.5]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.4...v2024.7.5
 [2024.7.4]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.3...v2024.7.4
