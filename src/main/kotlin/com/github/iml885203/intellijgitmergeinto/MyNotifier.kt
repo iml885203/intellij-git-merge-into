@@ -1,5 +1,6 @@
 package com.github.iml885203.intellijgitmergeinto
 
+import com.intellij.icons.AllIcons
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationAction
 import com.intellij.notification.NotificationGroupManager
@@ -25,11 +26,17 @@ class MyNotifier(private var project: Project) {
             .getNotificationGroup("Git Merge Into")
             .createNotification("Git merge into conflict", content, NotificationType.ERROR)
             .addAction(object : NotificationAction("Resolve conflicts") {
+                init {
+                    templatePresentation.icon = AllIcons.Diff.ApplyNotConflicts
+                }
                 override fun actionPerformed(e: AnActionEvent, notification: Notification) {
                     GitResolveConflictsAction().actionPerformed(e)
                 }
             })
             .addAction(object : NotificationAction("Abort and back"){
+                init {
+                    templatePresentation.icon = AllIcons.Actions.Rollback
+                }
                 override fun actionPerformed(e: AnActionEvent, notification: Notification) {
                     abortAndBackCallback.run()
                     notification.expire()
@@ -42,7 +49,7 @@ class MyNotifier(private var project: Project) {
         return NotificationGroupManager.getInstance()
             .getNotificationGroup("Git Merge Into")
             .createNotification(title, content, type)
-            .addAction(object : NotificationAction("Open git console") {
+            .addAction(object : NotificationAction("Show detail") {
                 override fun actionPerformed(e: AnActionEvent, notification: Notification) {
                     ShowVcsConsoleTabAction().actionPerformed(e)
                 }
