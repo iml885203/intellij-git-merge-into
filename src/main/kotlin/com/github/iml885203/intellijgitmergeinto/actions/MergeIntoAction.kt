@@ -9,7 +9,6 @@ import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager
 import git4idea.commands.GitCommand
 
 class MergeIntoAction : AnAction() {
@@ -125,7 +124,16 @@ class MergeIntoAction : AnAction() {
                     notifier.notifyFailed("Merge conflict occurred. Please resolve the conflict and try again.")
                 } else {
                     gitCommander.refreshVcsChanges()
-                    notifier.notifyConflict("Merge conflict occurred.")
+                    val abortAndBackCallback = Runnable {
+                        ProgressManager.getInstance().run(object : Task.Backgroundable(project, "Aborting and checking out branch") {
+                            override fun run(indicator: ProgressIndicator) {
+                                gitCommander.execute(GitCommand.MERGE, arrayOf("--abort"))
+                                gitCommander.execute(GitCommand.CHECKOUT, arrayOf(currentBranch))
+                                gitCommander.refreshVcsChanges()
+                            }
+                        })
+                    }
+                    notifier.notifyConflict("Merge conflict occurred.", abortAndBackCallback)
                 }
             } catch (abortEx: Exception) {
                 thisLogger().error("Failed to abort merge: ${abortEx.message}")

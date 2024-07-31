@@ -20,13 +20,19 @@ class MyNotifier(private var project: Project) {
             .notify(project)
     }
 
-    fun notifyConflict(content: String) {
+    fun notifyConflict(content: String, abortAndBackCallback: Runnable) {
         NotificationGroupManager.getInstance()
             .getNotificationGroup("Git Merge Into")
             .createNotification("Git merge into conflict", content, NotificationType.ERROR)
             .addAction(object : NotificationAction("Resolve conflicts") {
                 override fun actionPerformed(e: AnActionEvent, notification: Notification) {
                     GitResolveConflictsAction().actionPerformed(e)
+                }
+            })
+            .addAction(object : NotificationAction("Abort and back"){
+                override fun actionPerformed(e: AnActionEvent, notification: Notification) {
+                    abortAndBackCallback.run()
+                    notification.expire()
                 }
             })
             .notify(project)
