@@ -8,9 +8,12 @@ import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager
 import git4idea.commands.GitCommand
 
 class MergeIntoAction : AnAction() {
+    private lateinit var project: Project
     private lateinit var gitCommander: GitCommander
     private lateinit var notifier: MyNotifier
     private lateinit var state: AppSettings.State
@@ -18,7 +21,7 @@ class MergeIntoAction : AnAction() {
     private var isRunning: Boolean = false
 
     override fun actionPerformed(e: AnActionEvent ) {
-        val project = e.project ?: return
+        project = e.project ?: return
 
         if (isRunning) {
             return
@@ -88,6 +91,10 @@ class MergeIntoAction : AnAction() {
             gitCommander.execute(GitCommand.CHECKOUT, arrayOf(currentBranch))
 
             notifier.notifySuccess("Merge into $targetBranch completed.")
+        } catch(ex: MergeIntoException) {
+            when (ex.errorCode) {
+                EnumErrorCode.UncommittedChanges -> notifier.notifyFailed(ex.message)
+            }
         } catch (ex: Exception) {
             thisLogger().warn(ex)
             handleMergeFailure(ex, indicator, currentBranch)
@@ -112,9 +119,14 @@ class MergeIntoAction : AnAction() {
         val isConflict = ex.message!!.contains("CONFLICT", ignoreCase = true)
         if (isConflict) {
             try {
-                gitCommander.execute(GitCommand.MERGE, arrayOf("--abort"))
-                gitCommander.execute(GitCommand.CHECKOUT, arrayOf(currentBranch))
-                notifier.notifyFailed("Merge conflict occurred. Please resolve the conflict and try again.")
+                if (state.abortMergeWhenConflicts) {
+                    gitCommander.execute(GitCommand.MERGE, arrayOf("--abort"))
+                    gitCommander.execute(GitCommand.CHECKOUT, arrayOf(currentBranch))
+                    notifier.notifyFailed("Merge conflict occurred. Please resolve the conflict and try again.")
+                } else {
+                    gitCommander.refreshVcsChanges()
+                    notifier.notifyConflict("Merge conflict occurred.")
+                }
             } catch (abortEx: Exception) {
                 thisLogger().error("Failed to abort merge: ${abortEx.message}")
             }

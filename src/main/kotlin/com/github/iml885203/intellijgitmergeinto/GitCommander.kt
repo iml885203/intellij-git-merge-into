@@ -1,6 +1,7 @@
 package com.github.iml885203.intellijgitmergeinto
 
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager
 import git4idea.commands.Git
 import git4idea.commands.GitCommand
 import git4idea.commands.GitLineHandler
@@ -24,7 +25,6 @@ class GitCommander(private var project: Project) {
         return repositories.firstOrNull { it.root.path == project.basePath }
     }
 
-
     fun execute(command: GitCommand, params: Array<String>) {
         val handler = GitLineHandler(project, repoRoot(), command)
         for (param in params) {
@@ -39,7 +39,12 @@ class GitCommander(private var project: Project) {
         val result  = Git.getInstance().runCommand(handler)
         result.throwOnError()
         if (result.output.isNotEmpty()) {
-            throw IllegalStateException("There are uncommitted changes in the current branch.")
+            throw MergeIntoException(EnumErrorCode.UncommittedChanges, "There are uncommitted changes.")
         }
+    }
+
+    fun refreshVcsChanges() {
+        val dirtyScopeManager = VcsDirtyScopeManager.getInstance(project)
+        dirtyScopeManager.markEverythingDirty()
     }
 }

@@ -15,6 +15,7 @@ class AppSettings : PersistentStateComponent<AppSettings.State> {
         var targetBranch: String = "develop"
         var pushAfterMerge: Boolean = true
         var runInBackground: Boolean = false
+        var abortMergeWhenConflicts: Boolean = true
     }
 
     private var myState: State = State()

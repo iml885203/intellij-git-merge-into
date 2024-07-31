@@ -29,7 +29,8 @@ class AppSettingsConfigurable : Configurable {
         val state = AppSettings.instance.state
         return mySettingsComponent?.targetBranchText != state.targetBranch ||
                 mySettingsComponent?.pushAfterMerge != state.pushAfterMerge ||
-                mySettingsComponent?.runInBackground != state.runInBackground
+                mySettingsComponent?.runInBackground != state.runInBackground ||
+                mySettingsComponent?.abortMergeWhenConflicts != state.abortMergeWhenConflicts
     }
 
     override fun apply() {
@@ -37,6 +38,7 @@ class AppSettingsConfigurable : Configurable {
         state.targetBranch = mySettingsComponent?.targetBranchText ?: ""
         state.pushAfterMerge = mySettingsComponent?.pushAfterMerge ?: false
         state.runInBackground = mySettingsComponent?.runInBackground ?: false
+        state.abortMergeWhenConflicts = mySettingsComponent?.abortMergeWhenConflicts ?: false
     }
 
     override fun reset() {
@@ -44,6 +46,7 @@ class AppSettingsConfigurable : Configurable {
         mySettingsComponent?.targetBranchText = state.targetBranch
         mySettingsComponent?.pushAfterMerge = state.pushAfterMerge
         mySettingsComponent?.runInBackground = state.runInBackground
+        mySettingsComponent?.abortMergeWhenConflicts = state.abortMergeWhenConflicts
     }
 
     override fun disposeUIResources() {

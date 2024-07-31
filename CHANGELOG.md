@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+- Fix handle uncommitted changes
+- Support abort merge when conflict setting
+
 ## [2024.7.6] - 2024-07-30
 
 - Update action icon

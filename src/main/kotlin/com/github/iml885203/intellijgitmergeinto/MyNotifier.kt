@@ -7,6 +7,7 @@ import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.Project
 import com.intellij.vcs.console.ShowVcsConsoleTabAction
+import git4idea.actions.GitResolveConflictsAction
 
 class MyNotifier(private var project: Project) {
     fun notifyFailed(content: String) {
@@ -16,6 +17,18 @@ class MyNotifier(private var project: Project) {
 
     fun notifySuccess(content: String) {
         createNotification("Git merge into success", content, NotificationType.INFORMATION)
+            .notify(project)
+    }
+
+    fun notifyConflict(content: String) {
+        NotificationGroupManager.getInstance()
+            .getNotificationGroup("Git Merge Into")
+            .createNotification("Git merge into conflict", content, NotificationType.ERROR)
+            .addAction(object : NotificationAction("Resolve conflicts") {
+                override fun actionPerformed(e: AnActionEvent, notification: Notification) {
+                    GitResolveConflictsAction().actionPerformed(e)
+                }
+            })
             .notify(project)
     }
 

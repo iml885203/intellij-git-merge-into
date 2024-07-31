@@ -12,12 +12,14 @@ class AppSettingsComponent {
     private val myTargetBranchText = JBTextField()
     private val myPushAfterMerge = JBCheckBox("Push after merge")
     private val myRunInBackground = JBCheckBox("Run in background")
+    private val myAbortMergeWhenConflicts = JBCheckBox("Abort merge when conflicts")
 
     init {
         myMainPanel = FormBuilder.createFormBuilder()
             .addLabeledComponent(JBLabel("Target branch:"), this.myTargetBranchText, 1, false)
             .addComponent(myPushAfterMerge, 1)
             .addComponent(myRunInBackground, 1)
+            .addComponent(myAbortMergeWhenConflicts, 1)
             .addComponentFillVertically(JPanel(), 0)
             .panel
     }
@@ -44,5 +46,11 @@ class AppSettingsComponent {
         get() = myRunInBackground.isSelected
         set(newStatus) {
             myRunInBackground.isSelected = newStatus
+        }
+
+    var abortMergeWhenConflicts: Boolean
+        get() = myAbortMergeWhenConflicts.isSelected
+        set(newStatus) {
+            myAbortMergeWhenConflicts.isSelected = newStatus
         }
 }
