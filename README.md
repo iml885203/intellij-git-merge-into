@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/iml885203/intellij-git-merge-into/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/24969-git-merge-into.svg)](https://plugins.jetbrains.com/plugin/24969-git-merge-into)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/24969-git-merge-into.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/24969-git-merge-into.svg)](https://plugins.jetbrains.com/plugin/24969-git-merge-into)
 
 ## Description
 <!-- Plugin description -->
