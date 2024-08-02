@@ -9,6 +9,7 @@ import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.project.guessProjectDir
 import com.intellij.openapi.vfs.VfsUtil
 import git4idea.commands.GitCommand
 
@@ -131,7 +132,7 @@ class MergeIntoAction : AnAction() {
                                 gitCommander.execute(GitCommand.MERGE, arrayOf("--abort"))
                                 gitCommander.execute(GitCommand.CHECKOUT, arrayOf(currentBranch))
                                 gitCommander.refreshVcsChanges()
-                                VfsUtil.markDirtyAndRefresh(true, true, true, project.baseDir)
+                                VfsUtil.markDirtyAndRefresh(true, true, true, project.guessProjectDir())
                             }
                         })
                     }
