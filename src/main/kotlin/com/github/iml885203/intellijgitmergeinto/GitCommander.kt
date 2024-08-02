@@ -1,7 +1,5 @@
 package com.github.iml885203.intellijgitmergeinto
 
-import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager
 import git4idea.commands.Git
