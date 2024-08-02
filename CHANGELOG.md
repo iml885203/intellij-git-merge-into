@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+- Fix abort merge not refresh files
+
 ## [2024.7.7] - 2024-07-31
 
 - Fix handle uncommitted changes
