@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+- Support project settings
+
 ## [2024.8.1] - 2024-08-02
 
 - Fix abort merge not refresh files

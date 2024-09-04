@@ -21,6 +21,14 @@
                 instance="com.github.iml885203.intellijgitmergeinto.settings.AppSettingsConfigurable"
                 id="com.github.iml885203.intellijgitmergeinto.settings.AppSettingsConfigurable"
                 displayName="Git Merge Into"/>
+
+        <projectService
+                serviceImplementation="com.github.iml885203.intellijgitmergeinto.settings.ProjectSettings"/>
+        <projectConfigurable
+                parentId="com.github.iml885203.intellijgitmergeinto.settings.AppSettingsConfigurable"
+                instance="com.github.iml885203.intellijgitmergeinto.settings.ProjectSettingsConfigurable"
+                id="com.github.iml885203.intellijgitmergeinto.settings.ProjectSettingsConfigurable"
+                displayName="Git Merge Into(Project)"/>
     </extensions>
 
     <actions>

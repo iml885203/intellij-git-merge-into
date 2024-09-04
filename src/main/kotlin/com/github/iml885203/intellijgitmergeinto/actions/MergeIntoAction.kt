@@ -2,6 +2,7 @@ package com.github.iml885203.intellijgitmergeinto.actions
 
 import com.github.iml885203.intellijgitmergeinto.*
 import com.github.iml885203.intellijgitmergeinto.settings.AppSettings
+import com.github.iml885203.intellijgitmergeinto.settings.ProjectSettings
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.diagnostic.thisLogger
@@ -18,6 +19,7 @@ class MergeIntoAction : AnAction() {
     private lateinit var gitCommander: GitCommander
     private lateinit var notifier: MyNotifier
     private lateinit var state: AppSettings.State
+    private lateinit var projectState: ProjectSettings.State
     private lateinit var indicatorProcessor: IndicatorProcessor
     private var isRunning: Boolean = false
 
@@ -42,7 +44,8 @@ class MergeIntoAction : AnAction() {
 
         val progressManager = ProgressManager.getInstance()
         state = AppSettings.instance.state
-        val targetBranch = state.targetBranch
+        projectState = ProjectSettings.getInstance(project).state
+        val targetBranch = if (projectState.targetBranchOverwrite) projectState.targetBranch else state.targetBranch
         if (state.runInBackground) {
             progressManager.run(object :
                 Task.Backgroundable(project,"Merging into $targetBranch",true) {
