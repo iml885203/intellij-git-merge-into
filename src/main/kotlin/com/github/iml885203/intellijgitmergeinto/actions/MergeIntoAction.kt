@@ -63,7 +63,8 @@ class MergeIntoAction : AnAction() {
     private fun mergeBranch(currentBranch: String, targetBranch: String) {
         this.isRunning = true
         val indicator = ProgressManager.getInstance().progressIndicator
-        indicatorProcessor = IndicatorProcessor(indicator, step = if (state.pushAfterMerge) 6 else 5)
+        val pushAfterMerge = if (projectState.targetBranchOverwrite) projectState.pushAfterMerge else state.pushAfterMerge
+        indicatorProcessor = IndicatorProcessor(indicator, step = if (pushAfterMerge) 6 else 5)
 
         try {
             gitCommander.checkUncommittedChanges()
@@ -85,7 +86,7 @@ class MergeIntoAction : AnAction() {
             gitCommander.execute(GitCommand.MERGE, arrayOf(currentBranch))
 
             // Push changes
-            if (state.pushAfterMerge) {
+            if (pushAfterMerge) {
                 indicatorProcessor.nextStep("Pushing changes...")
                 gitCommander.execute(GitCommand.PUSH, arrayOf("origin", targetBranch))
             }

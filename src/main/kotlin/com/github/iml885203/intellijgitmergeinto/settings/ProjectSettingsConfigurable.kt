@@ -29,19 +29,25 @@ class ProjectSettingsConfigurable(private val project: Project) : Configurable {
     override fun isModified(): Boolean {
         val state = ProjectSettings.getInstance(project).state
         return mySettingsComponent?.targetBranchText != state.targetBranch ||
-                mySettingsComponent?.targetBranchOverwrite != state.targetBranchOverwrite
+                mySettingsComponent?.targetBranchOverwrite != state.targetBranchOverwrite ||
+                mySettingsComponent?.pushAfterMerge != state.pushAfterMerge ||
+                mySettingsComponent?.pushAfterMergeOverwrite != state.pushAfterMergeOverwrite
     }
 
     override fun apply() {
         val state = ProjectSettings.getInstance(project).state
         state.targetBranch = mySettingsComponent?.targetBranchText ?: ""
         state.targetBranchOverwrite = mySettingsComponent?.targetBranchOverwrite ?: false
+        state.pushAfterMerge = mySettingsComponent?.pushAfterMerge ?: false
+        state.pushAfterMergeOverwrite = mySettingsComponent?.pushAfterMergeOverwrite ?: false
     }
 
     override fun reset() {
         val state = ProjectSettings.getInstance(project).state
         mySettingsComponent?.targetBranchText = state.targetBranch
         mySettingsComponent?.targetBranchOverwrite = state.targetBranchOverwrite
+        mySettingsComponent?.pushAfterMerge = state.pushAfterMerge
+        mySettingsComponent?.pushAfterMergeOverwrite = state.pushAfterMergeOverwrite
     }
 
     override fun disposeUIResources() {

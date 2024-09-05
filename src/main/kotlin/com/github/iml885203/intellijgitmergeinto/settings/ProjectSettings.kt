@@ -14,6 +14,8 @@ class ProjectSettings : PersistentStateComponent<ProjectSettings.State> {
     class State {
         var targetBranchOverwrite: Boolean = false
         var targetBranch: String = "develop"
+        var pushAfterMergeOverwrite: Boolean = false
+        var pushAfterMerge: Boolean = false
     }
 
     private var myState: State = State()
