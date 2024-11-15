@@ -26,24 +26,6 @@ class MyNotifier(private var project: Project) {
         NotificationGroupManager.getInstance()
             .getNotificationGroup("Git Merge Into")
             .createNotification("Git merge into conflict", content, NotificationType.ERROR)
-            .addAction(object : NotificationAction("Resolve conflicts") {
-                init {
-                    templatePresentation.icon = AllIcons.Diff.ApplyNotConflicts
-                }
-                override fun actionPerformed(e: AnActionEvent, notification: Notification) {
-                    val action = ActionManager.getInstance().getAction("Git.ResolveConflicts")
-                    action?.actionPerformed(e)
-                }
-            })
-            .addAction(object : NotificationAction("Abort and back"){
-                init {
-                    templatePresentation.icon = AllIcons.Actions.Rollback
-                }
-                override fun actionPerformed(e: AnActionEvent, notification: Notification) {
-                    abortAndBackCallback.run()
-                    notification.expire()
-                }
-            })
             .notify(project)
     }
 
@@ -51,11 +33,5 @@ class MyNotifier(private var project: Project) {
         return NotificationGroupManager.getInstance()
             .getNotificationGroup("Git Merge Into")
             .createNotification(title, content, type)
-            .addAction(object : NotificationAction("Show detail") {
-                override fun actionPerformed(e: AnActionEvent, notification: Notification) {
-                    val action = ActionManager.getInstance().getAction("Vcs.ShowConsoleTab")
-                    action?.actionPerformed(e)
-                }
-            })
     }
 }
