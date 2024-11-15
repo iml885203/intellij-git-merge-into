@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+- support 2024.4.3
+
 ## [2024.9.1] - 2024-09-05
 
 - Support project settings
