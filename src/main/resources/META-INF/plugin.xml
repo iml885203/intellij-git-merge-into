@@ -31,7 +31,7 @@
     </extensions>
 
     <actions>
-        <action class="com.github.iml885203.intellijgitmergeinto.actions.MergeIntoAction" id="com.github.iml885203.intellijgitmergeinto.actions.MergeIntoAction" text="Merge Into" icon="com.intellij.icons.ExpUiIcons.Vcs.Merge">
+        <action class="com.github.iml885203.intellijgitmergeinto.actions.MergeIntoAction" id="com.github.iml885203.intellijgitmergeinto.actions.MergeIntoAction" text="Merge Into" icon="/icons/merge.svg">
             <keyboard-shortcut keymap="$default" first-keystroke="alt G" second-keystroke="I"/>
         </action>
     </actions>
