@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2024.11.4] - 2024-11-15
+
 - Fix icon not show in JetBrain 2024.4.3
 
 ## [2024.11.3] - 2024-11-15
@@ -50,7 +52,8 @@
 
 - Support merge into develop branch
 
-[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.3...HEAD
+[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.4...HEAD
+[2024.11.4]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.3...v2024.11.4
 [2024.11.3]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.9.1...v2024.11.3
 [2024.9.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.8.1...v2024.9.1
 [2024.8.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.7.7...v2024.8.1
