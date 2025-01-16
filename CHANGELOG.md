@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2025.1.1] - 2025-01-16
+
 - Support for 2025.1
 
 ## [2024.11.4] - 2024-11-15
@@ -54,7 +56,8 @@
 
 - Support merge into develop branch
 
-[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.4...HEAD
+[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.1.1...HEAD
+[2025.1.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.4...v2025.1.1
 [2024.11.4]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.3...v2024.11.4
 [2024.11.3]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.9.1...v2024.11.3
 [2024.9.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.8.1...v2024.9.1
