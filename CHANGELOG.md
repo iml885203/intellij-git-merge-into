@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+### Changed
+- Upgraded IntelliJ Platform from 2023.2.7 to 2024.2.5
+
 ## [2025.9.1] - 2025-09-01
 
 - Support for 2025.2
