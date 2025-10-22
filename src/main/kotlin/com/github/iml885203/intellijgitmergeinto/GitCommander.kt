@@ -28,16 +28,21 @@ class GitCommander(private var project: Project) {
     fun execute(command: GitCommand, params: Array<String>) {
         val handler = GitLineHandler(project, repoRoot(), command)
         for (param in params) {
-            handler.addParameters(param)
+            handler.addParameter(param)
         }
-        Git.getInstance().runCommand(handler).throwOnError()
+        val result = Git.getInstance().runCommand(handler)
+        if (!result.success()) {
+            throw RuntimeException(result.errorOutputAsJoinedString)
+        }
     }
 
     fun checkUncommittedChanges() {
         val handler = GitLineHandler(project, repoRoot(), GitCommand.STATUS)
-        handler.addParameters("--porcelain")
+        handler.addParameter("--porcelain")
         val result  = Git.getInstance().runCommand(handler)
-        result.throwOnError()
+        if (!result.success()) {
+            throw RuntimeException(result.errorOutputAsJoinedString)
+        }
         if (result.output.isNotEmpty()) {
             throw MergeIntoException(EnumErrorCode.UncommittedChanges, "There are uncommitted changes.")
         }
