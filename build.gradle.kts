@@ -36,10 +36,6 @@ dependencies {
         // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
         bundledPlugins(properties("platformPlugins").map { it.split(',').map(String::trim).filter(String::isNotEmpty) })
 
-        // Required bundled modules for Git4Idea (since 2024.2+)
-        bundledModule("intellij.platform.vcs.dvcs")
-        bundledModule("intellij.platform.vcs.impl")
-
         // IntelliJ Platform Plugin Verifier
         pluginVerifier()
 
