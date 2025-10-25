@@ -41,9 +41,6 @@ dependencies {
 
         // Test Framework
         testFramework(TestFrameworkType.Platform)
-
-        // Instrumentation Tools
-        instrumentationTools()
     }
 }
 
