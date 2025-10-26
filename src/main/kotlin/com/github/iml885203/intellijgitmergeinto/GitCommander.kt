@@ -10,7 +10,7 @@ import git4idea.repo.GitRepositoryManager
 
 class GitCommander(private var project: Project) {
     private val repository: GitRepository?
-    private fun repoRoot() = repository!!.root
+    private fun repoRoot() = repository!!.getRoot()
 
     init {
         repository = findMainRepository(project)
@@ -22,23 +22,26 @@ class GitCommander(private var project: Project) {
 
     private fun findMainRepository(project: Project): GitRepository? {
         val repositories = GitRepositoryManager.getInstance(project).repositories
-        return repositories.firstOrNull { it.root.path == project.basePath }
+        return repositories.firstOrNull { it.getRoot().path == project.basePath }
     }
 
     fun execute(command: GitCommand, params: Array<String>) {
         val handler = GitLineHandler(project, repoRoot(), command)
-        for (param in params) {
-            handler.addParameters(param)
+        handler.addParameters(*params)
+        val result = Git.getInstance().runCommand(handler)
+        if (!result.success()) {
+            throw RuntimeException(result.errorOutputAsJoinedString)
         }
-        Git.getInstance().runCommand(handler).throwOnError()
     }
 
     fun checkUncommittedChanges() {
         val handler = GitLineHandler(project, repoRoot(), GitCommand.STATUS)
         handler.addParameters("--porcelain")
         val result  = Git.getInstance().runCommand(handler)
-        result.throwOnError()
-        if (result.output.isNotEmpty()) {
+        if (!result.success()) {
+            throw RuntimeException(result.errorOutputAsJoinedString)
+        }
+        if (result.getOutput().isNotEmpty()) {
             throw MergeIntoException(EnumErrorCode.UncommittedChanges, "There are uncommitted changes.")
         }
     }

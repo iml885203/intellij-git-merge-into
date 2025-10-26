@@ -4,6 +4,13 @@
 
 ## [Unreleased]
 
+### Changed
+- Upgraded IntelliJ Platform from 2023.2.7 to 2024.2.5
+- Upgraded IntelliJ Platform Gradle Plugin from 1.17.4 to 2.2.0
+- Upgraded Java version from 17 to 21
+- Updated minimum supported build from 232 (2023.2) to 242 (2024.2)
+- Updated Git4Idea API calls for 2024.2 compatibility
+
 ## [2025.9.1] - 2025-09-01
 
 - Support for 2025.2
