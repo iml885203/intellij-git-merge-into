@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2025.11.1] - 2025-11-12
+
 - Support for 2025.3
 - Migrate to IntelliJ Platform Gradle Plugin 2.x
 - Update Gradle from 8.9 to 8.13
@@ -65,7 +67,8 @@
 
 - Support merge into develop branch
 
-[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.9.1...HEAD
+[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.11.1...HEAD
+[2025.11.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.9.1...v2025.11.1
 [2025.9.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.1.1...v2025.9.1
 [2025.1.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.4...v2025.1.1
 [2024.11.4]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.3...v2024.11.4
