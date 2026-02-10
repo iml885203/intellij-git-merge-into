@@ -6,6 +6,7 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>Git4Idea</depends>
+    <depends optional="true" config-file="plugin-git-open.xml">com.github.iml885203.intellijgitopen</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 

@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+- Improve plugin description with detailed usage instructions, settings guide, and keyboard shortcuts
+- Restore Git Open menu integration as optional dependency (appears in Git Open group when installed)
 - Support for 2025.3
 - Migrate to IntelliJ Platform Gradle Plugin 2.x
 - Update Gradle from 8.9 to 8.13
