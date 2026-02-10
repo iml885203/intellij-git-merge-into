@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2026.2.1] - 2026-02-10
+
 - Improve plugin description with detailed usage instructions, settings guide, and keyboard shortcuts
 - Restore Git Open menu integration as optional dependency (appears in Git Open group when installed)
 - Restore plugin name to Title Case ("Git Merge Into") per JetBrains naming guidelines
@@ -68,7 +70,8 @@
 
 - Support merge into develop branch
 
-[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.9.1...HEAD
+[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2026.2.1...HEAD
+[2026.2.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.9.1...v2026.2.1
 [2025.9.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.1.1...v2025.9.1
 [2025.1.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.4...v2025.1.1
 [2024.11.4]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.3...v2024.11.4
