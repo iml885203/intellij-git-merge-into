@@ -19,6 +19,20 @@ Release workflow needs these secrets in repo settings:
 | `PRIVATE_KEY` | Plugin signing private key |
 | `PRIVATE_KEY_PASSWORD` | Private key password |
 
+## Troubleshooting
+
+### "Cannot find plugin" on publish
+If the plugin was previously removed from Marketplace, CI auto-publish won't work.
+You need to manually upload the zip once at https://plugins.jetbrains.com/plugin/add.
+
+Get the zip from CI artifact:
+```bash
+gh run download <run-id> --dir /tmp/plugin-artifact
+cd /tmp/plugin-artifact/<artifact-name>
+zip -r /tmp/plugin.zip <plugin-folder>/
+```
+Upload the zip, then future CI releases will work again.
+
 ## Version Convention
 
 `YYYY.M.X` — e.g. `2026.2.0`
