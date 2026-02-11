@@ -1,7 +1,7 @@
 <idea-plugin>
     <actions>
-        <action id="com.github.iml885203.intellijgitmergeinto.actions.MergeIntoAction">
+        <reference id="com.github.iml885203.intellijgitmergeinto.actions.MergeIntoAction">
             <add-to-group group-id="com.github.iml885203.intellijgitopen.actions.GitOpenGroup" anchor="last"/>
-        </action>
+        </reference>
     </actions>
 </idea-plugin>

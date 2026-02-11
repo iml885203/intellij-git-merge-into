@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+- Fix Git Open optional dependency using `<reference>` instead of `<action>` to resolve "action element should have specified class attribute" error
+
 ## [2026.2.1] - 2026-02-10
 
 - Improve plugin description with detailed usage instructions, settings guide, and keyboard shortcuts
