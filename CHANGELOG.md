@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2026.2.2] - 2026-02-11
+
 - Fix Git Open optional dependency using `<reference>` instead of `<action>` to resolve "action element should have specified class attribute" error
 
 ## [2026.2.1] - 2026-02-10
@@ -72,7 +74,8 @@
 
 - Support merge into develop branch
 
-[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2026.2.1...HEAD
+[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2026.2.2...HEAD
+[2026.2.2]: https://github.com/iml885203/intellij-git-merge-into/compare/v2026.2.1...v2026.2.2
 [2026.2.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.9.1...v2026.2.1
 [2025.9.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.1.1...v2025.9.1
 [2025.1.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2024.11.4...v2025.1.1
