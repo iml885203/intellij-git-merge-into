@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+- Add screenshots to plugin description showing Git Open menu integration and merge action in progress
+- Fix Git Open plugin reference URL in documentation
+
 ## [2026.2.2] - 2026-02-11
 
 - Fix Git Open optional dependency using `<reference>` instead of `<action>` to resolve "action element should have specified class attribute" error

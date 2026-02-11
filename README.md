@@ -14,13 +14,13 @@ Git Merge Into is a plugin that helps you quickly merge the current branch into 
 
 1. **Keyboard shortcut**: Press <kbd>Alt</kbd>+<kbd>G</kbd>, then <kbd>I</kbd> to trigger the merge action.
 2. **Action search**: Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> (or <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> on macOS), then type **"Merge Into"**.
-3. **Git Open menu**: If you have the [Git Open](https://plugins.jetbrains.com/plugin/24827-git-open) plugin installed, **Merge Into** will automatically appear in the Git Open action group.
+3. **Git Open menu**: If you have the [Git Open](https://plugins.jetbrains.com/plugin/24695-git-open) plugin installed, **Merge Into** will automatically appear in the Git Open action group.
 
-   ![Git Open Menu](readme/git-open-menu.png)
+   ![Git Open Menu](https://raw.githubusercontent.com/iml885203/intellij-git-merge-into/main/readme/git-open-menu.png)
 
 Once triggered, you'll see the merge process in action:
 
-![Merge Action](readme/action.png)
+![Merge Action](https://raw.githubusercontent.com/iml885203/intellij-git-merge-into/main/readme/action.png)
 
 ### What It Does
 
