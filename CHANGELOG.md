@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2026.2.3] - 2026-02-12
+
 - Add screenshots to plugin description showing Git Open menu integration and merge action in progress
 - Fix Git Open plugin reference URL in documentation
 
@@ -77,7 +79,8 @@
 
 - Support merge into develop branch
 
-[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2026.2.2...HEAD
+[Unreleased]: https://github.com/iml885203/intellij-git-merge-into/compare/v2026.2.3...HEAD
+[2026.2.3]: https://github.com/iml885203/intellij-git-merge-into/compare/v2026.2.2...v2026.2.3
 [2026.2.2]: https://github.com/iml885203/intellij-git-merge-into/compare/v2026.2.1...v2026.2.2
 [2026.2.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.9.1...v2026.2.1
 [2025.9.1]: https://github.com/iml885203/intellij-git-merge-into/compare/v2025.1.1...v2025.9.1
