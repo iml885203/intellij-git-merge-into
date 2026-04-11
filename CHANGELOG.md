@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [2026.4.0] - 2026-04-11
+
+- Remove untilBuild version cap to support all future IDE versions
+
 ## [2026.2.3] - 2026-02-12
 
 - Add screenshots to plugin description showing Git Open menu integration and merge action in progress
